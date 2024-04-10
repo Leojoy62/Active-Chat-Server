@@ -5,11 +5,15 @@ const server = http.createServer(app);
 const cors = require("cors");
 const { Server } = require("socket.io");
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://active-chat-client-murex.vercel.app",
+  methods: ["GET", "POST"],
+};
+app.use(cors(corsOptions));
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://active-chat-client-murex.vercel.app",
     methods: ["GET", "POST"],
   },
 });
