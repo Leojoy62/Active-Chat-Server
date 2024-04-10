@@ -8,12 +8,11 @@ const { Server } = require("socket.io");
 app.use(cors());
 
 const io = new Server(server, {
-  pingTimeout: 60000,
-  pingInterval: 25000,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  transports: ["websocket", "polling"],
 });
 
 io.on("connection", (socket) => {
@@ -34,7 +33,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hey3");
+  res.send("Hey4");
 });
 
 server.listen(3001, () => {
