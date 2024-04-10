@@ -10,6 +10,7 @@ app.use(cors());
 const io = new Server(server, {
   cors: {
     origin: "*",
+    credentials: true,
     methods: ["GET", "POST"],
   },
 });
@@ -32,7 +33,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hey5");
+  res.send("Hey6");
 });
 
 server.listen(3001, () => {
