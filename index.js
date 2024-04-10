@@ -12,7 +12,6 @@ const io = new Server(server, {
     origin: "*",
     methods: ["GET", "POST"],
   },
-  transports: ["websocket", "polling"],
 });
 
 io.on("connection", (socket) => {
@@ -33,7 +32,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hey4");
+  res.send("Hey5");
 });
 
 server.listen(3001, () => {
