@@ -9,10 +9,8 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173/",
+    origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
   },
 });
 io.on("connection", (socket) => {
