@@ -6,16 +6,22 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://active-chat-client-murex.vercel.app/",
   methods: ["GET", "POST"],
 };
 app.use(cors(corsOptions));
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://active-chat-client-murex.vercel.app/",
     methods: ["GET", "POST"],
   },
+});
+
+io.engine.on("headers", (headers, req) => {
+  headers["Access-Control-Allow-Origin"] =
+    "https://active-chat-client-murex.vercel.app";
+  headers["Access-Control-Allow-Methods"] = "GET,POST";
 });
 
 io.on("connection", (socket) => {
