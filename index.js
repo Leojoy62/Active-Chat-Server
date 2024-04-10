@@ -8,10 +8,13 @@ const { Server } = require("socket.io");
 app.use(cors());
 
 const io = new Server(server, {
+  wssEngine: ["ws", "wss"],
+  transports: ["websocket", "polling"],
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  allowEIO3: true,
 });
 
 io.on("connection", (socket) => {
